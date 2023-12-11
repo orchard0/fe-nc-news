@@ -15,3 +15,9 @@ export const getArticleById = async (id) => {
 		return res.data.articles[0];
 	});
 };
+
+export const getCommentsByArticleId = async (id) => {
+	return api.get(`/articles/${id}/comments`).then((res) => {
+		return res.data.comments;
+	});
+};
