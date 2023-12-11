@@ -5,10 +5,9 @@ import axios from 'axios';
 const Articles = () => {
 	const [articles, setArticles] = useState([]);
 
-	const api = axios.create({ baseURL: 'http://localhost:9090/api' });
-	// const api = axios.create({
-	// 	baseURL: 'https://nc-news-wbhn.onrender.com/api',
-	// });
+	const api = axios.create({
+		baseURL: 'https://nc-news-wbhn.onrender.com/api',
+	});
 
 	const getArticles = async () => {
 		try {
