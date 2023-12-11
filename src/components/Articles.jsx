@@ -4,15 +4,19 @@ import getArticles from './utils';
 
 const Articles = () => {
 	const [articles, setArticles] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		getArticles(setArticles, setIsLoading);
+		getArticles().then((results) => {
+			setArticles(results);
+			setIsLoading(false);
+		});
 	}, []);
+
+	if (isLoading) return <h1>Loading...</h1>;
 
 	return (
 		<>
-			{isLoading ? <h1>Loading articles...</h1> : ''}
 			{articles.map((article) => {
 				return (
 					<ArticleCard
