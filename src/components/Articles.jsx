@@ -1,29 +1,18 @@
 import { useEffect, useState } from 'react';
 import ArticleCard from './ArticleCard';
-import axios from 'axios';
+import getArticles from './utils';
 
 const Articles = () => {
 	const [articles, setArticles] = useState([]);
-
-	const api = axios.create({
-		baseURL: 'https://nc-news-wbhn.onrender.com/api',
-	});
-
-	const getArticles = async () => {
-		try {
-			const results = await api.get('/articles');
-			setArticles(results.data.articles);
-		} catch (err) {
-			console.log(err);
-		}
-	};
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
-		getArticles();
+		getArticles(setArticles, setIsLoading);
 	}, []);
 
 	return (
 		<>
+			{isLoading ? <h1>Loading articles...</h1> : ''}
 			{articles.map((article) => {
 				return (
 					<ArticleCard
