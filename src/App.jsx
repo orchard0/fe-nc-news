@@ -4,6 +4,7 @@ import Header from './components/Header.jsx/Header';
 import Articles from './components/Articles';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ArticleView from './components/ArticleView';
 
 function App() {
 	return (
@@ -11,6 +12,9 @@ function App() {
 			<Header></Header>
 			<Routes>
 				<Route path="/" element={<Articles></Articles>}></Route>
+				<Route
+					path="/article/:id"
+					element={<ArticleView></ArticleView>}></Route>
 			</Routes>
 		</>
 	);

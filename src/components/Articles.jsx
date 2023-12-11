@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ArticleCard from './ArticleCard';
-import getArticles from './utils';
+import { getArticles } from './utils';
 
 const Articles = () => {
 	const [articles, setArticles] = useState([]);
