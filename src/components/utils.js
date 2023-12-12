@@ -16,7 +16,7 @@ export const getArticleById = (id) => {
 	});
 };
 
-export const getCommentsByArticleId = async (id) => {
+export const getCommentsByArticleId = (id) => {
 	return api.get(`/articles/${id}/comments`).then((res) => {
 		return res.data.comments;
 	});
