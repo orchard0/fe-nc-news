@@ -10,8 +10,8 @@ const Commments = ({ id }) => {
 
 	useEffect(() => {
 		getCommentsByArticleId(id)
-			.then((res) => {
-				setComments(res);
+			.then((fetchedComments) => {
+				setComments(fetchedComments);
 				setIsLoading(false);
 			})
 			.catch((err) => {
@@ -27,6 +27,7 @@ const Commments = ({ id }) => {
 		<>
 			<h1>Comments</h1>
 			<Row style={{ 'justify-content': 'center' }}>
+				{comments.length === 0 ? <p>Be the first to comment!</p> : ''}
 				{comments.map((comment) => {
 					return (
 						<Comment
