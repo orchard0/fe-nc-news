@@ -26,7 +26,7 @@ const Commments = ({ id }) => {
 	return (
 		<>
 			<h1>Comments</h1>
-			<Row style={{ 'justify-content': 'center' }}>
+			<Row style={{ justifyContent: 'center' }}>
 				{comments.map((comment) => {
 					return (
 						<Comment

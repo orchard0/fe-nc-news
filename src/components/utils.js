@@ -21,3 +21,9 @@ export const getCommentsByArticleId = (id) => {
 		return res.data.comments;
 	});
 };
+
+export const patchArticle = (id, body) => {
+	return api.patch(`/articles/${id}`, body).then((res) => {
+		return res.data;
+	});
+};
