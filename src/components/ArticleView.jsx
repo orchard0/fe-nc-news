@@ -27,26 +27,37 @@ const ArticleView = () => {
 	if (isLoading) return <h1>Loading...</h1>;
 	if (isError) return <h1>Error!</h1>;
 
+	const dateDisplay = new Date(article.created_at).toLocaleDateString(
+		'en-GB',
+		{
+			year: 'numeric',
+			month: 'short',
+			day: 'numeric',
+		}
+	);
+
 	return (
 		<>
-			{' '}
 			<Card>
 				<Card.Body>
 					<Card.Img variant="top" src={article.article_img_url} />
 					<Card.Body></Card.Body>
 					<Card.Title>{article.title} </Card.Title>
-					<p>by {article.author}</p>
+					<p>
+						by {article.author} | {dateDisplay} | 💬{' '}
+						{article.comment_count}
+					</p>
 					<Col>
 						<Button variant="primary">👍</Button>
 						<Button variant="warning">👎🏽</Button>
 						<Button disabled={true} variant="secondary">
 							{article.votes}
 						</Button>
-					</Col>{' '}
+					</Col>
 					<p></p>
 					<Card.Text align="left">{article.body} </Card.Text>
 				</Card.Body>
-			</Card>{' '}
+			</Card>
 			<Commments id={id}></Commments>
 		</>
 	);
