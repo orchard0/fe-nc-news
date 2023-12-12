@@ -3,8 +3,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { postComment } from './utils';
 import { useState } from 'react';
+import { UserContext } from './UserContext';
+import { useContext } from 'react';
 
 export const AddComment = ({ setComments, id, setShowToast, setToastMsg }) => {
+	const { user } = useContext(UserContext);
 	const [newComment, setNewComment] = useState();
 	const [isLoading, setIsLoading] = useState();
 	const [btnMsg, setBtnMsg] = useState('Post');
@@ -20,10 +23,10 @@ export const AddComment = ({ setComments, id, setShowToast, setToastMsg }) => {
 		if (commentBeingPosted === '') {
 			return;
 		}
-		const body = { username: 'cooljmessy', body: newComment };
+		const body = { username: user, body: newComment };
 		const addComment = {
 			body: newComment,
-			author: 'cooljmessy',
+			author: user,
 			article_id: id,
 			comment_id: crypto.randomUUID(),
 			created_at: Date(),
