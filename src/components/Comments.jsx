@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { getCommentsByArticleId } from './utils';
 import Comment from './Comment';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { AddComment } from './AddComment';
 import ToastMsg from './ToastMsg';
 
@@ -14,7 +13,6 @@ const Commments = ({ id }) => {
 	const [toastMsg, setToastMsg] = useState('');
 
 	useEffect(() => {
-		console.log('useEffect');
 		getCommentsByArticleId(id)
 			.then((fetchedComments) => {
 				setComments(fetchedComments);
@@ -34,7 +32,6 @@ const Commments = ({ id }) => {
 			<h1>Comments</h1>
 
 			<Row style={{ justifyContent: 'center' }}>
-				{' '}
 				<ToastMsg
 					showToast={showToast}
 					setShowToast={setShowToast}
@@ -51,7 +48,10 @@ const Commments = ({ id }) => {
 					return (
 						<Comment
 							key={comment.comment_id}
-							comment={comment}></Comment>
+							comment={comment}
+							setComments={setComments}
+							setShowToast={setShowToast}
+							setToastMsg={setToastMsg}></Comment>
 					);
 				})}
 			</Row>
