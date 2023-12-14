@@ -6,13 +6,17 @@ import Articles from './components/Articles';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ArticleView from './components/ArticleView';
 import { UserProvider } from './components/UserContext';
+import Homepage from './components/Homepage';
 
 function App() {
 	return (
 		<UserProvider>
 			<Header></Header>
 			<Routes>
-				<Route path="/" element={<Articles></Articles>}></Route>
+				<Route path="/" element={<Homepage></Homepage>}></Route>
+				<Route
+					path="/topics/:topic"
+					element={<Articles></Articles>}></Route>
 				<Route
 					path="/article/:id"
 					element={<ArticleView></ArticleView>}></Route>
