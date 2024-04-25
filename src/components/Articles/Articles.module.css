@@ -1,0 +1,12 @@
+.content {
+	width: 60vw;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+@media screen and (max-width: 830px) {
+	.content {
+		width: 90vw;
+	}
+}

@@ -1,0 +1,45 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 60vw;
+	/* justify-content: space-between; */
+}
+
+.top {
+	display: flex;
+	justify-content: space-between;
+	/* background-color: grey; */
+	font-size: 2rem;
+	padding: 0.5rem;
+	border-radius: 10px;
+}
+
+.username {
+	font-size: 1.25rem;
+	align-content: center;
+}
+
+.topics {
+	display: flex;
+	gap: 10px;
+	border-radius: 30px;
+	font-size: 20px;
+	background-color: #fff7ef;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-bottom: 10px;
+	scroll-behavior: auto;
+}
+
+@media screen and (max-width: 830px) {
+	.content {
+		width: 90vw;
+	}
+	.top {
+		font-size: 1.5rem;
+	}
+	.username {
+		font-size: 1rem;
+	}
+}

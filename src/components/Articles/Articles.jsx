@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import ArticleCard from './ArticleCard';
-import { getArticles } from './utils';
+import ArticleCard from '../ArticleCard/ArticleCard';
+import { getArticles } from '../utils';
 import { useParams } from 'react-router-dom';
+
+import styles from './Articles.module.css';
 
 const Articles = () => {
 	const [articles, setArticles] = useState([]);
@@ -12,6 +14,7 @@ const Articles = () => {
 	useEffect(() => {
 		getArticles(topic)
 			.then((results) => {
+				console.log(results);
 				setArticles(results);
 				setIsLoading(false);
 			})
@@ -25,7 +28,7 @@ const Articles = () => {
 	if (isError) return <h1>Error!</h1>;
 
 	return (
-		<>
+		<main className={styles.content}>
 			{articles.map((article) => {
 				return (
 					<ArticleCard
@@ -33,7 +36,7 @@ const Articles = () => {
 						article={article}></ArticleCard>
 				);
 			})}
-		</>
+		</main>
 	);
 };
 
