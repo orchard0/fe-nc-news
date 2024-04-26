@@ -1,0 +1,48 @@
+.content {
+	width: 60vw;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+}
+
+.info {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.img {
+	width: 30vw;
+	min-width: 500px;
+}
+
+.title {
+	margin: 0;
+}
+
+.articleBody {
+	width: 80%;
+}
+
+@media screen and (max-width: 830px) {
+	.content {
+		width: 80vw;
+		gap: 20px;
+	}
+	.info {
+		flex-wrap: wrap;
+		justify-items: flex-start;
+		align-content: flex-start;
+	}
+	.info p {
+		margin: 0;
+	}
+	.img {
+		width: 70vw;
+		min-width: none;
+	}
+	.articleBody {
+		width: 100%;
+	}
+}

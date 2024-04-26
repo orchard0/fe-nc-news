@@ -25,7 +25,7 @@ const Articles = () => {
 	}, []);
 
 	if (isLoading) return <h1>Loading...</h1>;
-	if (isError) return <h1>Error!</h1>;
+	if (isError) return <h1>503: Service unavailable!</h1>;
 
 	return (
 		<main className={styles.content}>

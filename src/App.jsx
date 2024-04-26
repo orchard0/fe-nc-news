@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Articles from './components/Articles/Articles';
-import ArticleView from './components/ArticleView';
+import ArticleView from './components/ArticleView/ArticleView';
 import { UserProvider } from './components/UserContext';
 import styles from './App.module.css';
 
