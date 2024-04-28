@@ -1,15 +1,32 @@
-import styles from './Comments.module.css';
-import { CommentArea } from './CommentArea';
+import { useEffect, useState } from 'react';
+import { getCommentsByArticleId } from '../utils';
+import { Comment } from './Comment';
 
 export const Comments = ({ id }) => {
-	console.log(id);
+	const [comments, setComments] = useState([]);
+
+	useEffect(() => {
+		getCommentsByArticleId(id)
+			.then((fetchedComments) => {
+				setComments(fetchedComments);
+				// setIsLoading(false);
+			})
+			.catch((err) => {
+				// setIsLoading(false);
+				// setIsError(true);
+			});
+	}, []);
+
 	return (
-		<section className={styles.content}>
-			<h1 className={styles.title}>Comments</h1>
-			<div className={styles.commentBox}></div>
-			<div className={styles.commentArea}>
-				<CommentArea id={id} />
-			</div>
-		</section>
+		<div>
+			{comments.map((comment) => {
+				console.log(comment);
+				return (
+					<Comment
+						key={comment.comment_id}
+						comment={comment}></Comment>
+				);
+			})}
+		</div>
 	);
 };

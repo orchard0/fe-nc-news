@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleById, patchArticle } from '../utils';
-import { Comments } from '../Comments/Comments';
+
 import ToastMsg from '../ToastMsg';
 
 import styles from './ArticleView.module.css';
+import { CommentsArea } from '../Comments/CommentsArea';
 
 const ArticleView = () => {
 	const [article, setArticle] = useState([]);
@@ -96,7 +97,7 @@ const ArticleView = () => {
 			<article className={styles.articleBody}>{article.body}</article>
 
 			<div className={styles.comments}>
-				<Comments id={article.article_id} />
+				<CommentsArea id={article.article_id} />
 			</div>
 		</div>
 	);
