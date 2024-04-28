@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleById, patchArticle } from '../utils';
+import { Comments } from '../Comments/Comments';
 import ToastMsg from '../ToastMsg';
 
 import styles from './ArticleView.module.css';
@@ -88,11 +89,15 @@ const ArticleView = () => {
 					onClick={() => {
 						addVote(-1);
 					}}>
-					👎🏽
+					👎
 				</button>
 			</section>
 
 			<article className={styles.articleBody}>{article.body}</article>
+
+			<div className={styles.comments}>
+				<Comments id={article.article_id} />
+			</div>
 		</div>
 	);
 

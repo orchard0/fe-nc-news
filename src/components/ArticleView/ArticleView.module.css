@@ -25,6 +25,10 @@
 	width: 80%;
 }
 
+.comments {
+	width: 40vw;
+}
+
 @media screen and (max-width: 830px) {
 	.content {
 		width: 80vw;

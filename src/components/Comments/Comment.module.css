@@ -1,0 +1,28 @@
+.commentArea {
+	display: flex;
+	flex-direction: column;
+	border: 1px white solid;
+	gap: 10px;
+	padding-left: 1rem;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.commentInfo {
+	display: flex;
+	gap: 10px;
+}
+
+.commentAuthor {
+	font-weight: 700;
+}
+
+.commentVotes {
+	display: flex;
+	gap: 5px;
+}
+
+.commentFooter {
+	display: flex;
+	gap: 10px;
+}
