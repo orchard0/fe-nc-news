@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-	baseURL: 'https://nc-news-wbhn.onrender.com/api',
+	baseURL: 'https://nc-news-backend.vercel.app/api',
 });
 
 export const getArticles = (topic) => {
