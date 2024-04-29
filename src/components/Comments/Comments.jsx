@@ -1,30 +1,14 @@
-import { useEffect, useState } from 'react';
-import { getCommentsByArticleId } from '../utils';
 import { Comment } from './Comment';
 
-export const Comments = ({ id }) => {
-	const [comments, setComments] = useState([]);
-
-	useEffect(() => {
-		getCommentsByArticleId(id)
-			.then((fetchedComments) => {
-				setComments(fetchedComments);
-				// setIsLoading(false);
-			})
-			.catch((err) => {
-				// setIsLoading(false);
-				// setIsError(true);
-			});
-	}, []);
-
+export const Comments = ({ comments, setComments }) => {
 	return (
 		<div>
 			{comments.map((comment) => {
-				console.log(comment);
 				return (
 					<Comment
 						key={comment.comment_id}
-						comment={comment}></Comment>
+						comment={comment}
+						setComments={setComments}></Comment>
 				);
 			})}
 		</div>
