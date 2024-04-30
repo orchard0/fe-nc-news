@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleById, patchArticle } from '../utils';
-
+import { CommentsArea } from '../Comments/CommentsArea';
 import ToastMsg from '../ToastMsg';
 
 import styles from './ArticleView.module.css';
-import { CommentsArea } from '../Comments/CommentsArea';
 
 const ArticleView = () => {
 	const [article, setArticle] = useState([]);
