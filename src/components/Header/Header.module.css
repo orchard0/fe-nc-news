@@ -3,16 +3,25 @@
 	flex-direction: column;
 	gap: 10px;
 	width: 60vw;
-	/* justify-content: space-between; */
 }
 
 .top {
 	display: flex;
 	justify-content: space-between;
-	/* background-color: grey; */
 	font-size: 2rem;
 	padding: 0.5rem;
 	border-radius: 10px;
+}
+
+.title a,
+.topics a {
+	color: black;
+	text-decoration: none;
+}
+
+.title a:hover,
+.topics a:hover {
+	text-decoration: underline;
 }
 
 .username {

@@ -2,7 +2,11 @@ import styles from './ArticleCard.module.css';
 
 const ArticleCard = ({ article }) => {
 	return (
-		<section className={styles.content}>
+		<section
+			className={styles.content}
+			onClick={() => {
+				location.href = '/article/' + article.article_id;
+			}}>
 			<img className={styles.img} src={article.article_img_url} alt="" />
 			<div className={styles.info}>
 				{' '}

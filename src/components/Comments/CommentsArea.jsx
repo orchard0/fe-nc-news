@@ -5,20 +5,14 @@ import { useEffect, useState } from 'react';
 import { getCommentsByArticleId } from '../utils';
 
 export const CommentsArea = ({ id, setArticle }) => {
-	console.log(id);
-
 	const [comments, setComments] = useState([]);
 
 	useEffect(() => {
 		getCommentsByArticleId(id)
 			.then((fetchedComments) => {
 				setComments(fetchedComments);
-				// setIsLoading(false);
 			})
-			.catch((err) => {
-				// setIsLoading(false);
-				// setIsError(true);
-			});
+			.catch((err) => {});
 	}, []);
 
 	return (

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleById, patchArticle } from '../utils';
 import { CommentsArea } from '../Comments/CommentsArea';
-import ToastMsg from '../ToastMsg';
 
 import styles from './ArticleView.module.css';
 
@@ -11,8 +10,6 @@ const ArticleView = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
 	const [isVoteDone, setIsVoteDone] = useState(false);
-	const [showToast, setShowToast] = useState(false);
-	const [toastMsg, setToastMsg] = useState('');
 	const { id } = useParams();
 
 	useEffect(() => {
@@ -100,56 +97,6 @@ const ArticleView = () => {
 			</div>
 		</div>
 	);
-
-	// return (
-	// 	<>
-	// 		<Card>
-	// 			<Card.Body>
-	// 				<Card.Img variant="top" src={article.article_img_url} />
-	// 				<Card.Body></Card.Body>
-	// 				<Card.Title>{article.title} </Card.Title>
-	// 				<p>
-	// 					by {article.author} | {dateDisplay} | 💬{' '}
-	// 					{article.comment_count}
-	// 				</p>
-	// 				<Col>
-	// 					<Row
-	// 						style={{
-	// 							justifyContent: 'center',
-	// 						}}>
-	// 						<ToastMsg
-	// 							showToast={showToast}
-	// 							setShowToast={setShowToast}
-	// 							toastMsg={toastMsg}></ToastMsg>
-	// 					</Row>
-
-	// 					<Button
-	// 						disabled={isVoteDone}
-	// 						variant="primary"
-	// 						onClick={() => {
-	// 							addVote(1);
-	// 						}}>
-	// 						👍
-	// 					</Button>
-	// 					<Button
-	// 						disabled={isVoteDone}
-	// 						variant="warning"
-	// 						onClick={() => {
-	// 							addVote(-1);
-	// 						}}>
-	// 						👎🏽
-	// 					</Button>
-	// 					<Button disabled={true} variant="secondary">
-	// 						{article.votes}
-	// 					</Button>
-	// 				</Col>
-	// 				<p></p>
-	// 				<Card.Text align="left">{article.body} </Card.Text>
-	// 			</Card.Body>
-	// 		</Card>
-	// 		<Commments id={id}></Commments>
-	// 	</>
-	// );
 };
 
 export default ArticleView;
