@@ -3,13 +3,41 @@ import styles from './CommentBox.module.css';
 import { postComment } from '../utils';
 import { UserContext } from '../UserContext';
 
-export const CommentBox = ({ id, setComments }) => {
+export const CommentBox = ({ id, setComments, setArticle }) => {
 	const { user } = useContext(UserContext);
 	const [newComment, setNewComment] = useState();
 	const [btnText, setBtnText] = useState('Post');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		const optimisticUpdates = () => {
+			setComments((currentComments) => {
+				return [addComment, ...currentComments];
+			});
+
+			setArticle((current) => {
+				const { comment_count, ...rest } = current;
+				return {
+					comment_count: Number(comment_count) + 1,
+					...rest,
+				};
+			});
+		};
+
+		const revertOptimisticUpdates = () => {
+			setComments((currentComments) => {
+				const [latest, ...rest] = currentComments;
+				return [...rest];
+			});
+			setArticle((current) => {
+				const { comment_count, ...rest } = current;
+				return {
+					comment_count: comment_count - 1,
+					...rest,
+				};
+			});
+		};
+
 		const commentBeingPosted = newComment;
 		if (commentBeingPosted === '') {
 			return;
@@ -24,12 +52,8 @@ export const CommentBox = ({ id, setComments }) => {
 			votes: 0,
 		};
 
-		console.log(addComment);
-
 		setNewComment('');
-		setComments((currentComments) => {
-			return [addComment, ...currentComments];
-		});
+		optimisticUpdates();
 		postComment(id, body)
 			.then(() => {
 				console.log('success');
@@ -40,10 +64,7 @@ export const CommentBox = ({ id, setComments }) => {
 				}, 1000);
 			})
 			.catch((err) => {
-				setComments((currentComments) => {
-					const [latest, ...rest] = currentComments;
-					return [...rest];
-				});
+				revertOptimisticUpdates();
 				setNewComment(commentBeingPosted);
 				setBtnText('Try again...');
 			});

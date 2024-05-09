@@ -33,6 +33,12 @@ export const patchArticle = (id, body) => {
 	});
 };
 
+export const patchComment = (id, body) => {
+	return api.patch(`/comments/${id}`, body).then((res) => {
+		return res.data;
+	});
+};
+
 export const postComment = (id, body) => {
 	return api.post(`/articles/${id}/comments`, body).then((res) => {
 		return res.data.comment[0];
