@@ -96,7 +96,7 @@ const ArticleView = () => {
 			<article className={styles.articleBody}>{article.body}</article>
 
 			<div className={styles.comments}>
-				<CommentsArea id={article.article_id} />
+				<CommentsArea id={article.article_id} setArticle={setArticle} />
 			</div>
 		</div>
 	);
